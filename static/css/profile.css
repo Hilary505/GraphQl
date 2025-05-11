@@ -1,7 +1,7 @@
-/* styles.css */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f7fa;
+    background-color: tomato;
     margin: 0;
     padding: 0;
     display: flex;
@@ -18,73 +18,107 @@ body {
     text-align: center;
   }
   
-  #logout {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-  }
+#logout {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  background-color: #ff4c4c;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
   
-  #logout:hover {
+#logout:hover {
     background-color: #c0392b;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
+}
   
-  #profile {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    width: 80%;
-    max-width: 600px;
-    margin-bottom: 2rem;
-  }
+.profile-details h2 {
+    margin: 0 0 0.5rem;
+    color: #2c3e50;
+}
   
-  /* Profile content styles */
+.profile-details p {
+    margin: 0.5rem 0;
+    color: #7f8c8d;
+}
+  
+#profile {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  width: 250px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #3498db;
+}
+
+.profile-details {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+#profile:hover .profile-details {
+  opacity: 1;
+  visibility: visible;
+}
+
+ @media (max-width: 768px) {
   .profile-info {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    text-align: center;
   }
   
   .profile-pic {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #3498db;
+    margin: 0 auto;
   }
   
-  .profile-details h2 {
-    margin: 0 0 0.5rem;
-    color: #2c3e50;
+  #profile {
+    width: 90%;
+    padding: 1.5rem;
   }
-  
-  .profile-details p {
-    margin: 0.5rem 0;
-    color: #7f8c8d;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .profile-info {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-    
-    .profile-pic {
-      margin: 0 auto;
-    }
-    
-    #profile {
-      width: 90%;
-      padding: 1.5rem;
-    }
-  }
+}
+
+.audit-section {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.audit-section h2 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.audit-list {
+  list-style: none;
+  padding: 0;
+}
+
+.audit-list li {
+  margin-bottom: 1rem;
+  background: #f9f9f9;
+  padding: 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}

@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
 const page = () => {
   document.body.innerHTML = "";
   document.body.innerHTML = `
-    <h1>Login</h1>
+
     <form id="loginForm">
-      <input type="text" id="identifier" placeholder="UserName or Email"><br><br>
+      <input type="text" id="identifier" placeholder="UserName or Email">
       <input type="password" id="password" placeholder="Password">
       <button type="submit">Login</button>
       <p id="error" style="color:red;"></p>
@@ -48,5 +48,3 @@ const login = () => {
       }
     });
 }
-
-  

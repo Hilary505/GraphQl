@@ -1,10 +1,8 @@
-
 import { getProfileQuery } from './queries.js';
 import { profile } from './profile.js';
 
 export const authenicate = () => {
   const token = localStorage.getItem('jwt');
-  console.log('JWTT', token)
   if (!token) {
     console.log("TOKEN ERRROR")
     return
@@ -25,5 +23,6 @@ export const authenicate = () => {
     .catch(err => {
       console.error(err);
     });
+    console.log("auth.js loaded")
 }
 
