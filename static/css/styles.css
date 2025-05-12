@@ -124,3 +124,74 @@ body {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.gradient-bg {
+  background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+}
+
+.sidebar {
+  transition: all 0.3s;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.progress-bar {
+  height: 8px;
+  border-radius: 4px;
+}
+
+.chart-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-top: 5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #3B82F6;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background: #2563EB;
+}
+
+.error-message {
+  color: #EF4444;
+  margin-top: 1rem;
+  text-align: center;
+}

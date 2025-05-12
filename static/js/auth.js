@@ -1,11 +1,12 @@
 import { getProfileQuery } from './queries.js';
-import { profile } from './profile.js';
+import { initializeDashboard } from './dashboard.js';
 
-export const authenicate = () => {
+export const authenticate = () => {
   const token = localStorage.getItem('jwt');
+  console.log(token)
   if (!token) {
-    console.log("TOKEN ERRROR")
-    return
+    console.log("No token found");
+    return;
   }
   
   fetch('https://learn.zone01kisumu.ke/api/graphql-engine/v1/graphql', {
@@ -18,11 +19,10 @@ export const authenicate = () => {
   })
     .then(res => res.json())
     .then(data => {
-      profile(data);
+      initializeDashboard(data); 
     })
     .catch(err => {
-      console.error(err);
+      console.error("Fetch error:", err);
     });
     console.log("auth.js loaded")
-}
-
+};
