@@ -46,9 +46,25 @@ export const initializeDashboard = (data) => {
   const xpHistory = user.xpHistory;
   let svg = generateXPLineGraph(xpHistory);
   
-  // Calculate XP in KB (assuming xp is in bytes)
-  const xpKB = user.xp ? (user.xp / 1024).toFixed(2) : 0;
-  
+  // Calculate total XP from history
+const totalXPFromHistory = xpHistory.reduce((sum, entry) => sum + entry.amount, 0);
+const totalXPMB = (totalXPFromHistory / 1_000_000).toFixed(2);
+
+// Create XP History card
+const xpCard = `
+  <div class="bg-white rounded-xl shadow-sm p-6">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <p class="text-sm text-gray-500">Total XP (MB)</p>
+        <p class="text-2xl font-bold">${totalXPMB}</p>
+      </div>
+      <div class="bg-purple-100 p-3 rounded-full">
+        <i class="fas fa-chart-line text-purple-600"></i>
+      </div>
+    </div>
+  </div>
+`;
+
   // Create audit ratio card
   const auditRatioCard = `
     <div class="bg-white rounded-xl shadow-sm p-6">
@@ -79,21 +95,6 @@ export const initializeDashboard = (data) => {
     </div>
   `;
   
-  // Create XP card (in KB)
-  const xpCard = `
-    <div class="bg-white rounded-xl shadow-sm p-6">
-      <div class="flex items-center justify-between">
-        <div>
-          <p class="text-sm text-gray-500">XP (KB)</p>
-          <p class="text-2xl font-bold">${xpKB}</p>
-        </div>
-        <div class="bg-purple-100 p-3 rounded-full">
-          <i class="fas fa-star text-purple-600"></i>
-        </div>
-      </div>
-    </div>
-  `;
-  
   document.body.innerHTML = `
     <div class="flex h-screen overflow-hidden bg-gray-50">
       <!-- Expanded Blue Sidebar -->
@@ -106,7 +107,7 @@ export const initializeDashboard = (data) => {
           <!-- User profile moved below logo -->
           <div class="flex items-center mt-6">
             <div class="relative mr-3">
-              <img src="${user.avatarUrl}" 
+              <img src="/home/docker/GraphQl/static/image/user.png" 
                    class="w-10 h-10 rounded-full object-cover border-2 border-blue-500">
               <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-blue-700"></span>
             </div>
