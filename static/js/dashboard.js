@@ -96,7 +96,7 @@ const xpCard = `
   `;
   
   document.body.innerHTML = `
-    <div class="flex h-screen overflow-hidden bg-gray-50">
+    <div class="flex h-screen w-full overflow-hidden bg-gray-50">
       <!-- Expanded Blue Sidebar -->
       <div class="sidebar bg-blue-700 w-64 flex-shrink-0 shadow-lg flex flex-col">
         <div class="p-6 mb-4">
@@ -168,7 +168,7 @@ const xpCard = `
         </header>
 
         <!-- Main content with proper spacing -->
-        <main class="p-8 space-y-8">
+        <main class="p-8 space-y-8 max-w-7xl mx-auto">
           <!-- Welcome banner -->
           <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl shadow-md p-6 text-white">
             <div class="flex justify-between items-center">
@@ -217,47 +217,38 @@ const xpCard = `
                 <h3 class="font-bold text-center">Piscine UX</h3>
               </div>
             </div>
-            
-            <!-- Piscine UI -->
-            <div class="bg-white rounded-xl shadow-sm p-6">
-              <div class="flex flex-col items-center">
-                <h3 class="font-bold text-center">Piscine UI</h3>
-              </div>
-            </div>
           </div>
-            <!-- Project Cards Section -->
+
+          <!-- Project Cards Section -->
           <div>
             <h2 class="text-xl font-bold mb-4">Your Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            ${createProjectCardsSummary(goCompleted, goProjects.length, 'Go Projects')}
-            ${createProjectCardsSummary(jsCompleted, jsProjects.length, 'JavaScript Projects')}
-            ${createProjectCardsSummary(rustCompleted, rustProjects.length, 'Rust Projects')}
+              ${createProjectCardsSummary(goCompleted, goProjects.length, 'Go Projects')}
+              ${createProjectCardsSummary(jsCompleted, jsProjects.length, 'JavaScript Projects')}
+              ${createProjectCardsSummary(rustCompleted, rustProjects.length, 'Rust Projects')}
             </div>
           </div>
 
           <!-- Stats Cards - removed hover effect -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="transactions-container">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="transactions-container">
             ${auditRatioCard}
             ${levelCard}
             ${xpCard}
           </div>
 
-          <!-- Skills card -->
-          <div class="grid grid-cols-1 gap-6">
+          <!-- Skills and XP Progression in a two-column layout -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Skills card -->
             <div class="bg-white rounded-xl shadow-sm p-6">
               <div class="flex justify-between items-center mb-4">
-                <button class="text-sm text-blue-600 hover:text-blue-800 font-medium">
-                 <h3 class="text-lg font-semibold">Skills</h3>
-                </button>
+                <h3 class="text-lg font-semibold">Skills</h3>
               </div>
               <div class="space-y-8" id="skills-container">
                 ${chart}
               </div>
             </div>
-          </div>
-          
-          <!-- XP Progression at the end - removed hover effect -->
-          <div class="grid grid-cols-1 gap-6">
+            
+            <!-- XP Progression -->
             <div class="bg-white rounded-xl shadow-sm p-6">
               <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-semibold">XP Progression</h3>
