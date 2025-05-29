@@ -8,6 +8,13 @@ export const getProfileQuery = `
       lastName
       campus
       auditRatio
+       level: transactions(
+        where: { type: { _eq: "level" } }
+        order_by: { createdAt: desc }
+        limit: 1
+      ) {
+        amount
+      }
        xpHistory: transactions(
         where: { 
           _and: [
