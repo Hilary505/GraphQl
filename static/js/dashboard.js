@@ -21,29 +21,25 @@ export const initializeDashboard = (data) => {
     return;
   }
   const user = data.data.user[0];
-  // Get project data from the responseconst totalXP = user.totalXP || [];
+  // Get project data from the response
+  const totalXP = user.totalXP || [];
   const goProjects = data.data.goItems || [];
   const jsProjects = data.data.jsItems || [];
   const rustProjects = data.data.rustItems || [];
   
-  
-  const totalXP = user.totalXP || [];
-  
+  // Get the current level from transactions
+  const currentLevel = user.level && user.level[0] ? user.level[0].amount : 0;
   
   const completedProjectNames = new Set(
     totalXP.map(entry => entry.object?.name).filter(name => typeof name === 'string')
   );
   
-  
   const countCompletedProjects = (projectList) =>
     projectList.filter(project => completedProjectNames.has(project.name)).length;
-  
   
   const goCompleted = countCompletedProjects(goProjects);
   const jsCompleted = countCompletedProjects(jsProjects);
   const rustCompleted = countCompletedProjects(rustProjects);
-
- 
 
   const skillTypes = user.skillTypes;
   let chart = renderSkillBars(skillTypes, true);
@@ -68,13 +64,13 @@ export const initializeDashboard = (data) => {
     </div>
   `;
   
-  // Create level card
+  // Create level card with the level from transactions
   const levelCard = `
     <div class="bg-white rounded-xl shadow-sm p-6">
       <div class="flex items-center justify-between">
         <div>
-          <p class="text-sm text-gray-500">Level</p>
-          <p class="text-2xl font-bold">${user.level}</p>
+          <p class="text-sm text-gray-500">Current Level</p>
+          <p class="text-2xl font-bold">${currentLevel}</p>
         </div>
         <div class="bg-green-100 p-3 rounded-full">
           <i class="fas fa-level-up-alt text-green-600"></i>
