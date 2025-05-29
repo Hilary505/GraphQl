@@ -107,7 +107,7 @@ const xpCard = `
           <!-- User profile moved below logo -->
           <div class="flex items-center mt-6">
             <div class="relative mr-3">
-              <img src="/home/docker/GraphQl/static/image/user.png" 
+              <img src="static/image/user.png" 
                    class="w-10 h-10 rounded-full object-cover border-2 border-blue-500">
               <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-blue-700"></span>
             </div>
@@ -153,6 +153,9 @@ const xpCard = `
             
             <!-- Right side icons - notification bell moved here -->
             <div class="flex items-center space-x-6">
+              <button id="theme-toggle" class="p-2 text-gray-500 hover:text-blue-600 focus:outline-none">
+                <i class="fas fa-moon text-xl"></i>
+              </button>
               <button class="relative p-2 text-gray-500 hover:text-blue-600 focus:outline-none">
                 <i class="far fa-bell text-xl"></i>
                 <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
@@ -282,5 +285,29 @@ const addEventListeners = () => {
       localStorage.removeItem('jwt');
       window.location.href = 'index.html';
     }
+  });
+
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = themeToggle.querySelector('i');
+  
+  // Check for saved theme preference
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+    themeIcon.classList.remove('fa-moon');
+    themeIcon.classList.add('fa-sun');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    
+    // Update icon
+    themeIcon.classList.toggle('fa-moon', !isDark);
+    themeIcon.classList.toggle('fa-sun', isDark);
+    
+    // Save preference
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
   });
 };
