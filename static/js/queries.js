@@ -1,5 +1,4 @@
 export const getProfileQuery = `
- 
   query {
     user {
       login
@@ -8,7 +7,18 @@ export const getProfileQuery = `
       lastName
       campus
       auditRatio
-       level: transactions(
+      audits: transactions(
+        where: { type: { _eq: "audit" } }
+        order_by: { createdAt: desc }
+      ) {
+        amount
+        createdAt
+        object {
+          name
+          type
+        }
+      }
+      level: transactions(
         where: { type: { _eq: "level" } }
         order_by: { createdAt: desc }
         limit: 1
@@ -83,5 +93,4 @@ export const getProfileQuery = `
     type
   }
   }
-  
 `;
