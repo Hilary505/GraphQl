@@ -34,8 +34,12 @@ export const initializeDashboard = (data) => {
   rustProjects = data.data.rustItems || [];
   const audits = user.audits || [];
   
-  // Get the current level from transactions
-  const currentLevel = user.level && user.level[0] ? user.level[0].amount : 0;
+  // Get the current level from transactions - using the most recent level transaction
+  const currentLevel = user.level?.length > 0 
+    ? user.level.reduce((latest, current) => 
+        new Date(current.createdAt) > new Date(latest.createdAt) ? current : latest
+      ).amount 
+    : 0;
   
   // Create a set of completed project names from transactions with type "xp"
   completedProjectNames = new Set(
