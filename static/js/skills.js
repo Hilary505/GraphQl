@@ -5,7 +5,7 @@ export function renderSkillBars(skillTypes, returnAsString = false) {
   }
 
   // Dimensions for vertical bar chart
-  const width = 600;
+  const width = 1220;
   const height = 450; // Increased height to accommodate vertical text
   const margin = { top: 40, right: 30, bottom: 100, left: 60 }; // Increased bottom margin
   const chartWidth = width - margin.left - margin.right;
@@ -36,7 +36,7 @@ export function renderSkillBars(skillTypes, returnAsString = false) {
     
     const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
     label.setAttribute("x", xPos);
-    label.setAttribute("y", chartHeight + 50); // Position below chart
+    label.setAttribute("y", chartHeight + 50); 
     label.setAttribute("text-anchor", "middle");
     label.setAttribute("font-size", "12px");
     label.setAttribute("transform", `rotate(-45, ${xPos}, ${chartHeight + 50})`); // Rotate text
