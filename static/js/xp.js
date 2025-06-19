@@ -14,7 +14,16 @@ export function generateXPLineGraph(data, width = 800, height = 400) {
         xp: totalXP
       };
     });
-  
+    if (!points.length) {
+      // Return a placeholder or empty SVG
+      return `
+        <svg viewBox="0 0 400 200" class="w-full h-full text-gray-400">
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="16">
+            No XP history available
+          </text>
+        </svg>
+      `;
+    }
     // Scaling
     const minDate = points[0].date;
     const maxDate = points[points.length - 1].date;
