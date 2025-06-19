@@ -7,17 +7,8 @@ export const getProfileQuery = `
       lastName
       campus
       auditRatio
-      audits: transactions(
-        where: { type: { _eq: "audit" } }
-        order_by: { createdAt: desc }
-      ) {
-        amount
-        createdAt
-        object {
-          name
-          type
-        }
-      }
+      attrs
+      
       level: transactions(
         where: { type: { _eq: "level" } }
         order_by: { createdAt: desc }
@@ -59,6 +50,7 @@ export const getProfileQuery = `
         amount
         createdAt
       }
+
       skillTypes: transactions_aggregate(
         distinct_on: [type]
         where: { type: { _nin: ["xp", "level", "up", "down"] } }
