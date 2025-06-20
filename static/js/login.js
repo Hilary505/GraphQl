@@ -43,7 +43,7 @@ const login = () => {
 
       if (!res.ok) {
         const errorData = await res.json();
-        errorElement.textContent = errorData.message || 'Network error  or check your credentials and try again !!!';
+        errorElement.textContent = errorData.message || 'Login Failed, try again !!';
         errorElement.style.display = 'block';
         return;
       }
